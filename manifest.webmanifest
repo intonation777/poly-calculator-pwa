@@ -1,0 +1,20 @@
+{
+  "name": "پلی‌محاسبه | قیمت روز لوله پلی‌اتیلن",
+  "short_name": "پلی‌محاسبه",
+  "description": "ماشین حساب قیمت لوله پلی‌اتیلن بر اساس وزن و نرخ روز",
+  "lang": "fa",
+  "dir": "rtl",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f7f5",
+  "theme_color": "#0d2c27",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
