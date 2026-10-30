@@ -7,6 +7,7 @@
 <meta name="description" content="ماشین حساب قیمت لوله پلی اتیلن بر اساس وزن، قطر، فشار و نرخ روز هر کیلوگرم">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
+<script>try{const theme=localStorage.getItem('pe-calc-theme');if(theme==='dark'||theme==='light')document.documentElement.dataset.theme=theme;}catch(e){}</script>
 <title>پلی‌محاسبه | قیمت روز لوله پلی‌اتیلن</title>
 <style>
 :root{color-scheme:light;--ink:#172b28;--muted:#687a75;--line:#e1e9e5;--bg:#f3f7f5;--card:#fff;--green:#0e6b55;--green2:#dff4eb;--gold:#d9a441;--radius:22px}
@@ -18,13 +19,67 @@ button,input,select{font:inherit}button{cursor:pointer}.app{max-width:1120px;mar
 .result{position:sticky;top:16px}.resulttop{background:#e8f6ef;border-radius:17px;padding:18px;margin-bottom:14px}.resulttop .eyebrow{font-size:12px;color:#3b7563;font-weight:700}.price{font-size:clamp(27px,4vw,38px);font-weight:900;letter-spacing:-1px;color:#0d5b47;line-height:1.5;overflow-wrap:anywhere}.unit{font-size:12px;color:#52786b}.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{border:1px solid var(--line);border-radius:14px;padding:12px}.stat span{display:block;color:var(--muted);font-size:11px}.stat strong{display:block;font-size:16px;margin-top:3px;overflow-wrap:anywhere}.resultline{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid #edf1ef;font-size:12px}.resultline:last-of-type{border:0}.resultline span{color:var(--muted)}.resultline strong{text-align:left}.actions{display:flex;gap:9px;margin-top:15px}.btn{border:0;border-radius:12px;padding:12px 14px;font-weight:700}.primary{background:var(--green);color:white;flex:1}.secondary{background:#edf3f0;color:#35534a}.section{margin-top:18px}.price-settings{display:grid;grid-template-columns:1fr 1fr;gap:12px}.price-input{position:relative}.price-input input{padding-left:56px}.price-input:after{content:"تومان";position:absolute;left:10px;top:12px;color:#7c8b86;font-size:11px}.note{margin-top:13px;padding:11px 13px;border-radius:12px;background:#fff8e8;color:#85641d;font-size:11px}.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:14px;margin-top:15px}.tablewrap table{border-collapse:collapse;width:100%;min-width:540px;font-size:12px}.tablewrap th,.tablewrap td{padding:10px 12px;text-align:right;border-bottom:1px solid #edf1ef;white-space:nowrap}.tablewrap th{background:#f5f8f6;color:#51655d}.tablewrap tr:last-child td{border-bottom:0}.tablewrap td:last-child{font-weight:800;color:var(--green)}.footer{text-align:center;color:#87958f;font-size:11px;margin-top:22px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#173c32;color:white;padding:10px 16px;border-radius:12px;box-shadow:0 6px 25px #0002;opacity:0;pointer-events:none;transition:.2s;z-index:5}.toast.show{opacity:1}.smallbtn{border:1px solid #d9e5df;background:#fff;border-radius:10px;padding:7px 10px;font-size:11px;color:#426257}
 @media(max-width:760px){.app{padding:13px 12px 28px}.top{margin-bottom:14px}.brand h1{font-size:17px}.hero{padding:21px;border-radius:22px}.hero h2{font-size:21px}.layout{grid-template-columns:1fr}.result{position:static;grid-row:1}.card{padding:17px}.price{font-size:34px}.pill{font-size:10px}.fieldgrid{gap:11px}}
 @media(max-width:380px){.fieldgrid,.price-settings{grid-template-columns:1fr}.field.full{grid-column:auto}.stats{gap:7px}.stat{padding:10px}.stat strong{font-size:14px}}
+@font-face{font-family:Vazirmatn;src:url("./fonts/Vazirmatn.woff2") format("woff2");font-style:normal;font-weight:100 900;font-display:swap}
+body{font-family:Vazirmatn,Tahoma,"Segoe UI",sans-serif;transition:background-color .2s,color .2s}
+.top-actions{display:flex;align-items:center;gap:8px}
+.theme-toggle{min-height:40px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink);padding:7px 12px;font-size:12px;font-weight:700;white-space:nowrap}
+.theme-toggle:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+:root[data-theme="dark"]{color-scheme:dark;--ink:#e3ece8;--muted:#a0b2aa;--line:#344740;--bg:#101a17;--card:#1a2823;--green:#62c9a7;--green2:#203c32}
+:root[data-theme="dark"] .step{background:#2b3a34;color:var(--muted)}
+:root[data-theme="dark"] .field label{color:#c0d0c8}
+:root[data-theme="dark"] .field input,:root[data-theme="dark"] .field select{border-color:var(--line);background:#14201b;color:var(--ink)}
+:root[data-theme="dark"] .field input::placeholder{color:#8fa198}
+:root[data-theme="dark"] .seg{background:#24332d}
+:root[data-theme="dark"] .seg button{color:var(--muted)}
+:root[data-theme="dark"] .seg button.active{background:#34473f;color:var(--green)}
+:root[data-theme="dark"] .resulttop{background:#203c32}
+:root[data-theme="dark"] .resulttop .eyebrow{color:#a3d8c4}
+:root[data-theme="dark"] .price{color:#75d6b3}
+:root[data-theme="dark"] .unit{color:#a7c7b9}
+:root[data-theme="dark"] .resultline{border-color:var(--line)}
+:root[data-theme="dark"] .secondary{background:#2b3c34;color:#d0dfd8}
+:root[data-theme="dark"] .price-input:after{color:var(--muted)}
+:root[data-theme="dark"] .note{background:#3a3321;color:#e4ca82}
+:root[data-theme="dark"] .tablewrap th,:root[data-theme="dark"] .tablewrap td{border-color:var(--line)}
+:root[data-theme="dark"] .tablewrap th{background:#22332c;color:#c0d0c8}
+:root[data-theme="dark"] .smallbtn{border-color:var(--line);background:#24332d;color:#d0dfd8}
+:root[data-theme="dark"] .pill{background:#203c32;color:#9be0c4}
+.theme-toggle,.btn,.smallbtn,.seg button{touch-action:manipulation}
+@media(max-width:600px){
+ body{font-size:15px}
+ .app{padding:12px 12px calc(28px + env(safe-area-inset-bottom))}
+ .top{align-items:flex-start;flex-wrap:wrap}
+ .top-actions{width:100%;justify-content:space-between}
+ .theme-toggle{min-height:44px;padding-inline:14px}
+ .hero{margin-bottom:13px}
+ .hero h2{font-size:20px}
+ .layout{gap:12px}
+ .card{padding:16px;border-radius:18px}
+ .cardhead{align-items:flex-start}
+ .field input,.field select{min-height:48px;font-size:16px}
+ .seg button,.btn,.smallbtn{min-height:44px}
+ .actions{flex-wrap:wrap}
+ .actions .btn{flex:1 1 130px}
+ .result{grid-row:1}
+ .resulttop{padding:15px}
+ .tablewrap{overscroll-behavior-x:contain}
+}
+@media(max-width:380px){
+ .app{padding-inline:10px}
+ .top-actions{align-items:flex-start}
+ .pill{white-space:normal}
+ .fieldgrid,.price-settings{grid-template-columns:1fr}
+ .field.full{grid-column:auto}
+ .cardhead{gap:6px}
+ .cardhead h3{font-size:15px}
+}
 </style>
 </head>
 <body>
 <div class="app">
 <header class="top">
  <div class="brand"><div class="logo">PE</div><div><h1>پلی‌محاسبه</h1><p>ماشین حساب تخصصی لوله پلی‌اتیلن</p></div></div>
- <span class="pill">● آماده محاسبه آفلاین</span>
+ <div class="top-actions"><span class="pill">● آماده محاسبه آفلاین</span><button class="theme-toggle" id="themeToggle" type="button" aria-label="تغییر به حالت تیره" aria-pressed="false">☾ حالت تیره</button></div>
 </header>
 <section class="hero"><small>محاسبه سریع قیمت روز</small><h2>از وزن هر متر تا قیمت نهایی، در چند ثانیه</h2><p>سایز و فشار کاری را انتخاب کنید؛ قیمت هر متر و هر شاخه بر اساس نرخ روز هر کیلوگرم محاسبه می‌شود. اطلاعات در همین دستگاه ذخیره می‌ماند.</p></section>
 <div class="layout">
@@ -82,6 +137,20 @@ const DATA = {"PE100":{"polymer":"PE100","sizes":[{"diameter":20,"options":[{"pn
 const fmt = n => new Intl.NumberFormat('fa-IR',{maximumFractionDigits:2}).format(n);
 const money = n => new Intl.NumberFormat('fa-IR',{maximumFractionDigits:0}).format(Math.round(n));
 const $ = id => document.getElementById(id);
+function applyTheme(theme,persist=true){
+ const dark=theme==='dark';
+ document.documentElement.dataset.theme=dark?'dark':'light';
+ $('themeToggle').textContent=dark?'☀ حالت روشن':'☾ حالت تیره';
+ $('themeToggle').setAttribute('aria-label',dark?'تغییر به حالت روشن':'تغییر به حالت تیره');
+ $('themeToggle').setAttribute('aria-pressed',String(dark));
+ document.querySelector('meta[name="theme-color"]').content=dark?'#101a17':'#0d2c27';
+ if(persist){
+  try{localStorage.setItem('pe-calc-theme',dark?'dark':'light')}
+  catch(e){toast('ذخیره حالت نمایش در این دستگاه در دسترس نیست')}
+ }
+}
+applyTheme(document.documentElement.dataset.theme||'light',false);
+$('themeToggle').addEventListener('click',()=>applyTheme(document.documentElement.dataset.theme==='dark'?'light':'dark'));
 let grade = 'A';
 let prices = {A:250000,B:280000};
 try { const saved=JSON.parse(localStorage.getItem('pe-calc-prices')||'null'); if(saved && saved.A>0 && saved.B>0) prices=saved; } catch(e){}
